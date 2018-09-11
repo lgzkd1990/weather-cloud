@@ -12,16 +12,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
-
-
 /**
- * Weather Data Sync Job.
- * 
- * @since 1.0.0 2017年11月23日
- * @author <a href="https://waylau.com">Way Lau</a> 
+ * 自定义一个job来气定时获取天气情况：
+ * 1、获取城市列表得到城市id
+ * 2、遍历城市列表，通过城市id获取城市天气信息
+ * 3、将信息储存到redis中
+ * 4、log打印同步时开始和结束的信息
  */
 public class WeatherDataSyncJob extends QuartzJobBean {
-	
+	//打印job的日志
 	private final static Logger logger = LoggerFactory.getLogger(WeatherDataSyncJob.class);  
 	
 	@Autowired

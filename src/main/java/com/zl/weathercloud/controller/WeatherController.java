@@ -3,10 +3,7 @@ package com.zl.weathercloud.controller;
 import com.zl.weathercloud.service.WeatherDataService;
 import com.zl.weathercloud.vo.WeatherResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -22,6 +19,12 @@ public class WeatherController {
 	
 	@GetMapping("/cityName/{cityName}")
 	public WeatherResponse getWeatherByCityName(@PathVariable("cityName") String cityName) {
+		return weatherDataService.getDataByCityName(cityName);
+	}
+
+
+	@GetMapping("/cityName")
+	public WeatherResponse getWeatherByCityName2(@RequestParam("cityName") String cityName) {
 		return weatherDataService.getDataByCityName(cityName);
 	}
 }
