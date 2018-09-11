@@ -1,0 +1,1 @@
+### http://mobile.weather.com.cn/js/citylist.xml
