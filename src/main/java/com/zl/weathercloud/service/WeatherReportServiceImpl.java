@@ -6,17 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-
-
 @Service
 public class WeatherReportServiceImpl implements WeatherReportService {
-	@Autowired
-	private WeatherDataService  weatherDataService;
-	
-	@Override
-	public Weather getDataByCityId(String cityId) {
-		WeatherResponse resp = weatherDataService.getDataByCityId(cityId);
-		return resp.getData();
-	}
+    @Autowired
+    private WeatherDataService weatherDataService;
+
+    @Override
+    public Weather getDataByCityId(String cityId) {
+        WeatherResponse resp = weatherDataService.getDataByCityId(cityId);
+        return resp.getData();
+    }
+
+    @Override
+    public Weather getDataByCityName(String cityName) {
+        WeatherResponse resp = weatherDataService.getDataByCityName(cityName);
+        return resp.getData();
+    }
 
 }

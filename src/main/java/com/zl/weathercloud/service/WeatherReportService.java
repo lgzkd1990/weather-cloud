@@ -11,4 +11,6 @@ public interface WeatherReportService {
 	 * @return
 	 */
 	Weather getDataByCityId(String cityId);
+
+	Weather getDataByCityName(String cityName);
 }

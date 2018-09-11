@@ -17,19 +17,42 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 @RequestMapping("/report")
 public class WeatherReportController {
-	@Autowired
-	private CityDataService cityDataService;
-	
-	@Autowired
-	private WeatherReportService weatherReportService;
-	
-	@GetMapping("/cityId/{cityId}")
-	public ModelAndView getReportByCityId(@PathVariable("cityId") String cityId, Model model) throws Exception {
-		model.addAttribute("title", "lgzkd的天气预报");
-		model.addAttribute("cityId", cityId);
-		model.addAttribute("cityList", cityDataService.listCity());
-		model.addAttribute("report", weatherReportService.getDataByCityId(cityId));
-		return new ModelAndView("weather/report", "reportModel", model);
-	}
+    @Autowired
+    private CityDataService cityDataService;
+
+    @Autowired
+    private WeatherReportService weatherReportService;
+
+    /**
+     * g根据id获取天气
+     * @param cityId
+     * @param model
+     * @return
+     * @throws Exception
+     */
+    @GetMapping("/cityId/{cityId}")
+    public ModelAndView getReportByCityId(@PathVariable("cityId") String cityId, Model model) throws Exception {
+        model.addAttribute("title", "lgzkd的天气预报");
+        model.addAttribute("cityId", cityId);
+        model.addAttribute("cityList", cityDataService.listCity());
+        model.addAttribute("report", weatherReportService.getDataByCityId(cityId));
+        return new ModelAndView("weather/report", "reportModel", model);
+    }
+
+    /**
+     * 根据名称获取天气
+     * @param cityName
+     * @param model
+     * @return
+     * @throws Exception
+     */
+    @GetMapping("/cityName/{cityName}")
+    public ModelAndView getReportByCityName(@PathVariable("cityName") String cityName,Model model) throws Exception {
+        model.addAttribute("title", "lgzkd的天气预报");
+        model.addAttribute("cityName", cityName);
+        model.addAttribute("cityList", cityDataService.listCity());
+        model.addAttribute("report", weatherReportService.getDataByCityName(cityName));
+        return new ModelAndView("weather/report", "reportModel", model);
+    }
 
 }
