@@ -15,6 +15,9 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * 天气数据服务器
+ */
 @Service
 public class WeatherDataServiceImpl implements WeatherDataService {
 	private final static Logger logger = LoggerFactory.getLogger(WeatherDataServiceImpl.class);  
